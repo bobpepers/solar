@@ -171,7 +171,7 @@ func (c *Compiler) execSolc() (*rawCompilerOutput, error) {
 			expandedPaths = append(expandedPaths, expandedPath)
 		}
 
-		args = append(args, "--allow-paths", strings.Join(expandedPaths, ","))
+		args = append(args, "--allow-paths --evm-version homestead", strings.Join(expandedPaths, ","))
 	}
 
 	// libraries linkage support
