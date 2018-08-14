@@ -158,7 +158,9 @@ func (c *Compiler) execSolc() (*rawCompilerOutput, error) {
 	if !opts.NoOptimize {
 		args = append(args, "--optimize")
 	}
-
+	
+	args = append(args, "--evm-version homestead")
+	
 	if len(opts.AllowPaths) > 0 {
 		var expandedPaths []string
 		for _, allowPath := range opts.AllowPaths {
@@ -171,7 +173,7 @@ func (c *Compiler) execSolc() (*rawCompilerOutput, error) {
 			expandedPaths = append(expandedPaths, expandedPath)
 		}
 
-		args = append(args, "--allow-paths --evm-version homestead", strings.Join(expandedPaths, ","))
+		args = append(args, "--allow-paths", strings.Join(expandedPaths, ","))
 	}
 
 	// libraries linkage support
