@@ -157,9 +157,10 @@ func (c *Compiler) execSolc() (*rawCompilerOutput, error) {
 
 	if !opts.NoOptimize {
 		args = append(args, "--optimize")
+		args = append(args, "--evm-version homestead")
 	}
 	
-	args = append(args, "--evm-version homestead")
+	
 	
 	if len(opts.AllowPaths) > 0 {
 		var expandedPaths []string
